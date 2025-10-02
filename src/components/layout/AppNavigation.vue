@@ -180,16 +180,21 @@ const prefetch = (name: 'home' | 'about' | 'services' | 'contact') => {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgb(31, 41, 55);
+  background: linear-gradient(
+      180deg,
+      rgba(17, 24, 39, 0.85) 0%,
+      rgba(17, 24, 39, 0.6) 100%
+    );
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
 }
 
 .navbar-scrolled {
-  background: rgb(31, 41, 55);
-  border-bottom-color: rgba(255, 255, 255, 0.2);
-  box-shadow: var(--shadow-light);
+  background: rgba(17, 24, 39, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.25);
 }
 
 .nav-container {
@@ -227,7 +232,7 @@ const prefetch = (name: 'home' | 'about' | 'services' | 'contact') => {
 
 .nav-link:hover,
 .nav-link.router-link-active {
-  color: #60a5fa;
+  color: var(--accent-color);
 }
 
 .nav-link::after {
@@ -237,7 +242,7 @@ const prefetch = (name: 'home' | 'about' | 'services' | 'contact') => {
   left: 0;
   width: 0;
   height: 2px;
-  background: #60a5fa;
+  background: var(--accent-color);
   transition: width 0.3s ease;
 }
 
@@ -260,7 +265,7 @@ const prefetch = (name: 'home' | 'about' | 'services' | 'contact') => {
 
 .cta-button:hover {
   box-shadow: var(--shadow-medium);
-  background: #1d4ed8;
+  filter: brightness(0.95);
 }
 
 .theme-toggle {
@@ -274,7 +279,7 @@ const prefetch = (name: 'home' | 'about' | 'services' | 'contact') => {
 }
 
 .theme-toggle:hover {
-  border-color: #60a5fa;
+  border-color: var(--accent-color);
 }
 
 /* Mobile Menu Button */
