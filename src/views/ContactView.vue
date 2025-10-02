@@ -253,9 +253,12 @@ const submitForm = async () => {
     console.log('Form submitted:', form)
 
     // Reset form after successful submission
-    Object.keys(form).forEach((key) => {
-      form[key] = ''
-    })
+    form.name = ''
+    form.email = ''
+    form.phone = ''
+    form.organization = ''
+    form.subject = ''
+    form.message = ''
 
     alert('Thank you for your message! We will get back to you soon.')
   } catch (error) {

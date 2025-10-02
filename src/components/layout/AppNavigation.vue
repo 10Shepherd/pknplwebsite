@@ -38,7 +38,7 @@
         <span class="hamburger-line"></span>
       </button>
 
-      <!-- Desktop CTA Button -->
+      <!-- Desktop CTA Button and Theme Toggle -->
       <button
         class="cta-button desktop-cta"
         v-motion
@@ -47,6 +47,16 @@
         @click="$router.push('/get-started')"
       >
         Get Started
+      </button>
+
+      <button
+        class="theme-toggle desktop-cta"
+        type="button"
+        :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+        @click="toggleTheme()"
+      >
+        <span v-if="isDark">🌙</span>
+        <span v-else>☀️</span>
       </button>
     </div>
 
@@ -84,6 +94,12 @@
             Get Started
           </button>
         </li>
+        <li>
+          <button class="mobile-cta-button" @click="() => { toggleTheme(); }">
+            <span v-if="isDark">Switch to Light Mode ☀️</span>
+            <span v-else>Switch to Dark Mode 🌙</span>
+          </button>
+        </li>
       </ul>
     </div>
   </nav>
@@ -91,9 +107,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useTheme } from '@/composables/useTheme'
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
+const { isDark, toggleTheme } = useTheme()
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50
@@ -243,6 +261,20 @@ const prefetch = (name: 'home' | 'about' | 'services' | 'contact') => {
 .cta-button:hover {
   box-shadow: var(--shadow-medium);
   background: #1d4ed8;
+}
+
+.theme-toggle {
+  margin-left: 0.75rem;
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.75rem;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  border-color: #60a5fa;
 }
 
 /* Mobile Menu Button */
