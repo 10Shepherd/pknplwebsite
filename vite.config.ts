@@ -1,4 +1,5 @@
-import { fileURLToPath, URL } from 'node:url'
+/// <reference types="node" />
+import { fileURLToPath, URL } from 'url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -13,6 +14,21 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+  },
+  optimizeDeps: {
+    include: ['vue', 'vue-router', '@vueuse/motion'],
+  },
+  build: {
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 800,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vue: ['vue', 'vue-router'],
+          motion: ['@vueuse/motion'],
+        },
+      },
     },
   },
 })

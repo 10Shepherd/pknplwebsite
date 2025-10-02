@@ -17,8 +17,6 @@
   },
   "dependencies": {
     "@vueuse/motion": "^3.0.3",
-    "framer-motion": "^12.23.15",
-    "gsap": "^3.13.0",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
   },

@@ -23,9 +23,12 @@
       <!-- Mobile Menu Button -->
       <button
         class="mobile-menu-btn"
+        type="button"
         @click="toggleMobileMenu"
         :class="{ active: isMobileMenuOpen }"
-        aria-label="Toggle mobile menu"
+        :aria-expanded="isMobileMenuOpen ? 'true' : 'false'"
+        aria-controls="primary-navigation"
+        :aria-label="isMobileMenuOpen ? 'Close menu' : 'Open menu'"
       >
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -45,7 +48,7 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <div class="mobile-nav" :class="{ 'mobile-nav-open': isMobileMenuOpen }">
+    <div id="primary-navigation" class="mobile-nav" :class="{ 'mobile-nav-open': isMobileMenuOpen }" :aria-hidden="isMobileMenuOpen ? 'false' : 'true'">
       <ul class="mobile-nav-links">
         <li>
           <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">Home</router-link>
@@ -244,7 +247,7 @@ onUnmounted(() => {
   opacity: 0;
 }
 
-.mobile-menu-btn.active .hamburger-line:third-child {
+.mobile-menu-btn.active .hamburger-line:nth-child(3) {
   transform: rotate(-45deg);
 }
 
