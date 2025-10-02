@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Google Fonts moved to index.html for better loading behavior */
 
 :root {
   --primary-white: #ffffff;
@@ -78,9 +78,9 @@ body {
   outline: none;
 }
 
-/* Smooth transitions for all elements */
-* {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Limit global transitions to interactive elements to avoid layout/paint thrash */
+a, button, .btn-primary, .btn-secondary, .cta-button, .mobile-cta-button, .nav-link, input, select, textarea {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 /* Enhanced scrollbar styles */
