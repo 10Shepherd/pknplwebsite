@@ -4,8 +4,10 @@ import App from './App.vue'
 import router from './router'
 import './assets/styles/main.css'
 import { initLowDataMode } from './composables/useLowDataMode'
+import { initTheme } from './composables/useTheme'
 
 initLowDataMode()
+initTheme()
 
 const app = createApp(App)
 

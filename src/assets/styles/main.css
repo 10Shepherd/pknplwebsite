@@ -35,6 +35,48 @@
   --space-3xl: clamp(4rem, 8vw, 6rem);
 }
 
+/* Explicit theme tokens bound to data-theme attribute */
+[data-theme='dark'] {
+  --primary-white: #0b1220;
+  --off-white: #0f172a;
+  --light-gray: #0b1a33;
+  --medium-gray: #1f2a44;
+  --text-dark: #e5e7eb;
+  --text-gray: #b6c2cf;
+  --accent-color: #60a5fa;
+}
+
+[data-theme='dark'] body {
+  background-color: var(--primary-white);
+  color: var(--text-dark);
+}
+
+[data-theme='dark'] .navbar {
+  background: rgba(12, 18, 32, 0.9);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme='dark'] .cta-button,
+[data-theme='dark'] .btn-primary,
+[data-theme='dark'] .mobile-cta-button {
+  box-shadow: none;
+}
+
+[data-theme='dark'] .floating-card,
+[data-theme='dark'] .content-card,
+[data-theme='dark'] .service-card,
+[data-theme='dark'] .program-card,
+[data-theme='dark'] .team-member,
+[data-theme='dark'] .advantage-item,
+[data-theme='dark'] .stat-item,
+[data-theme='dark'] .offering-card,
+[data-theme='dark'] .contact-item,
+[data-theme='dark'] .hours-list,
+[data-theme='dark'] .map-placeholder {
+  background: var(--off-white);
+  box-shadow: var(--shadow-light);
+}
+
 /* CSS Reset and Base Styles */
 *,
 *::before,
