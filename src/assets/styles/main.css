@@ -8,11 +8,27 @@
   --text-dark: #1a1a1a;
   --text-gray: #6b7280;
   --accent-color: #6366f1;
+  /* Extended semantic palette */
+  --accent-color-2: #3b82f6; /* azure */
+  --accent-color-3: #22d3ee; /* cyan */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --surface: #ffffff;
+  --overlay: rgba(255, 255, 255, 0.6);
+  --border-translucent: rgba(255, 255, 255, 0.35);
+  --border-strong: rgba(17, 24, 39, 0.1);
   --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
   --shadow-large: 0 20px 25px rgba(0, 0, 0, 0.1);
   --radius: 12px;
   --radius-lg: 24px;
+
+  /* Gradient tokens */
+  --gradient-primary: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color-2) 50%, var(--accent-color-3) 100%);
+  --gradient-success: linear-gradient(135deg, #10b981, #059669);
+  --gradient-warning: linear-gradient(135deg, #f59e0b, #d97706);
+  --gradient-danger: linear-gradient(135deg, #ef4444, #dc2626);
 
   /* Responsive typography scale */
   --text-xs: clamp(0.75rem, 1.5vw, 0.875rem);
@@ -44,6 +60,12 @@
   --text-dark: #e5e7eb;
   --text-gray: #b6c2cf;
   --accent-color: #60a5fa;
+  --accent-color-2: #3b82f6;
+  --accent-color-3: #22d3ee;
+  --surface: #0f172a;
+  --overlay: rgba(12, 18, 32, 0.6);
+  --border-translucent: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.12);
 }
 
 [data-theme='dark'] body {
@@ -452,6 +474,46 @@ th {
 }
 .font-bold {
   font-weight: 700;
+}
+
+/* Modern visual utilities */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-surface {
+  background: var(--overlay);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-translucent);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.15);
+}
+
+.surface-card {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-light);
+}
+
+.gradient-border {
+  position: relative;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    var(--gradient-primary) border-box;
+}
+
+/* Gradient mesh background utility for hero/headers */
+.gradient-mesh {
+  background:
+    radial-gradient(1200px 600px at -10% -20%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, rgba(59, 130, 246, 0.18), transparent 60%),
+    radial-gradient(700px 400px at 30% 120%, rgba(34, 211, 238, 0.16), transparent 60%),
+    linear-gradient(135deg, var(--primary-white), var(--off-white));
 }
 
 /* Color utilities */
