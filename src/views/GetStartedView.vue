@@ -528,7 +528,9 @@
                   <div class="cta-section">
                     <h3>Ready to Begin?</h3>
                     <p>Start your project by scheduling a consultation with our team.</p>
-                    <button class="cta-button">Schedule Consultation</button>
+                    <button class="cta-button" @click="$router.push('/contact')">
+                      Schedule Consultation
+                    </button>
                   </div>
                 </div>
               </div>
