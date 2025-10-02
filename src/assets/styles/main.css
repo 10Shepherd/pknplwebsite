@@ -454,6 +454,33 @@ th {
   box-shadow: var(--shadow-medium);
 }
 
+/* Low-data mode visual tweaks */
+[data-lowdata='true'] body {
+  image-rendering: optimizeSpeed;
+}
+
+[data-lowdata='true'] .navbar {
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+[data-lowdata='true'] .btn-primary,
+[data-lowdata='true'] .btn-secondary,
+[data-lowdata='true'] .cta-button,
+[data-lowdata='true'] .mobile-cta-button,
+[data-lowdata='true'] .nav-link {
+  transition-duration: 120ms;
+}
+
+[data-lowdata='true'] .floating-card,
+[data-lowdata='true'] .bg-decoration {
+  display: none !important;
+}
+
+[data-lowdata='true'] .hero-visual {
+  height: auto;
+}
+
 /* Responsive breakpoints */
 
 /* Large Desktop (1440px+) */

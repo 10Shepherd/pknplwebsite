@@ -17,10 +17,10 @@
 
       <!-- Desktop Navigation -->
       <ul class="nav-links desktop-nav" role="menubar" aria-label="Primary">
-        <li role="none"><router-link to="/" class="nav-link" role="menuitem">Home</router-link></li>
-        <li role="none"><router-link to="/about" class="nav-link" role="menuitem">About</router-link></li>
-        <li role="none"><router-link to="/services" class="nav-link" role="menuitem">Services</router-link></li>
-        <li role="none"><router-link to="/contact" class="nav-link" role="menuitem">Contact</router-link></li>
+        <li role="none"><router-link to="/" class="nav-link" role="menuitem" @mouseenter="prefetch('home')">Home</router-link></li>
+        <li role="none"><router-link to="/about" class="nav-link" role="menuitem" @mouseenter="prefetch('about')">About</router-link></li>
+        <li role="none"><router-link to="/services" class="nav-link" role="menuitem" @mouseenter="prefetch('services')">Services</router-link></li>
+        <li role="none"><router-link to="/contact" class="nav-link" role="menuitem" @mouseenter="prefetch('contact')">Contact</router-link></li>
       </ul>
 
       <!-- Mobile Menu Button -->
@@ -127,6 +127,32 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
   document.body.style.overflow = 'auto' // Ensure body scroll is restored
 })
+
+// Prefetch route chunks on hover for faster perceived speed on good networks
+const canPrefetch = (): boolean => {
+  const info = (navigator as unknown as { connection?: { saveData?: boolean; effectiveType?: string } }).connection
+  const saveData = Boolean(info && info.saveData)
+  const slow = Boolean(info && info.effectiveType && /(^|-)2g$|^slow-2g$/.test(info.effectiveType))
+  return !saveData && !slow
+}
+
+const prefetch = (name: 'home' | 'about' | 'services' | 'contact') => {
+  if (!canPrefetch()) return
+  switch (name) {
+    case 'home':
+      import('../../views/HomeView.vue')
+      break
+    case 'about':
+      import('../../views/AboutView.vue')
+      break
+    case 'services':
+      import('../../views/ServicesView.vue')
+      break
+    case 'contact':
+      import('../../views/ContactView.vue')
+      break
+  }
+}
 </script>
 
 <style scoped>

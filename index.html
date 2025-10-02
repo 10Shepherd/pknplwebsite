@@ -27,11 +27,24 @@
     <meta name="twitter:image" content="https://www.parthinfo.com/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    </noscript>
+    <script>
+      (function() {
+        try {
+          var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+          var saveData = conn && conn.saveData;
+          var slow = conn && conn.effectiveType && /(^|-)2g$|^slow-2g$/.test(conn.effectiveType);
+          var prefersReducedData = window.matchMedia && window.matchMedia('(prefers-reduced-data: reduce)').matches;
+          if (saveData || slow || prefersReducedData) {
+            document.documentElement.setAttribute('data-lowdata', 'true');
+            return;
+          }
+        } catch (e) {}
+        var l = document.createElement('link');
+        l.rel = 'stylesheet';
+        l.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
+        document.head.appendChild(l);
+      })();
+    </script>
     <link rel="apple-touch-icon" href="/favicon.ico">
   </head>
   <body>
