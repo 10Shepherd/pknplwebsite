@@ -6,18 +6,21 @@
     :initial="{ y: -100, opacity: 0 }"
     :enter="{ y: 0, opacity: 1 }"
     :transition="{ duration: 800, ease: 'easeOut' }"
+    aria-label="Primary navigation"
   >
     <div class="nav-container">
       <div class="nav-logo">
-        <h2>Parth Knowledge Network</h2>
+        <h2 class="site-title">
+          <router-link to="/" class="site-title-link">Parth Knowledge Network</router-link>
+        </h2>
       </div>
 
       <!-- Desktop Navigation -->
-      <ul class="nav-links desktop-nav">
-        <li><router-link to="/" class="nav-link">Home</router-link></li>
-        <li><router-link to="/about" class="nav-link">About</router-link></li>
-        <li><router-link to="/services" class="nav-link">Services</router-link></li>
-        <li><router-link to="/contact" class="nav-link">Contact</router-link></li>
+      <ul class="nav-links desktop-nav" role="menubar" aria-label="Primary">
+        <li role="none"><router-link to="/" class="nav-link" role="menuitem">Home</router-link></li>
+        <li role="none"><router-link to="/about" class="nav-link" role="menuitem">About</router-link></li>
+        <li role="none"><router-link to="/services" class="nav-link" role="menuitem">Services</router-link></li>
+        <li role="none"><router-link to="/contact" class="nav-link" role="menuitem">Contact</router-link></li>
       </ul>
 
       <!-- Mobile Menu Button -->
@@ -48,7 +51,7 @@
     </div>
 
     <!-- Mobile Navigation Menu -->
-    <div id="primary-navigation" class="mobile-nav" :class="{ 'mobile-nav-open': isMobileMenuOpen }" :aria-hidden="isMobileMenuOpen ? 'false' : 'true'">
+    <div id="primary-navigation" class="mobile-nav" :class="{ 'mobile-nav-open': isMobileMenuOpen }" :aria-hidden="isMobileMenuOpen ? 'false' : 'true'" role="dialog" aria-modal="true">
       <ul class="mobile-nav-links">
         <li>
           <router-link to="/" class="mobile-nav-link" @click="closeMobileMenu">Home</router-link>

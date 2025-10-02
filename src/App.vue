@@ -1,8 +1,9 @@
 <template>
   <div id="app">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <AppNavigation />
 
-    <main>
+    <main id="main-content" role="main" tabindex="-1">
       <RouterView v-slot="{ Component }">
         <Transition name="page" mode="out-in" :duration="{ enter: 500, leave: 300 }">
           <component :is="Component" />
