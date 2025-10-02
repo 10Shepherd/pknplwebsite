@@ -3,6 +3,9 @@ import { MotionPlugin } from '@vueuse/motion'
 import App from './App.vue'
 import router from './router'
 import './assets/styles/main.css'
+import { initLowDataMode } from './composables/useLowDataMode'
+
+initLowDataMode()
 
 const app = createApp(App)
 

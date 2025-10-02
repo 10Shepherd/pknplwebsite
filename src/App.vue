@@ -1,10 +1,11 @@
 <template>
   <div id="app">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <AppNavigation />
 
-    <main>
+    <main id="main-content" role="main" tabindex="-1">
       <RouterView v-slot="{ Component }">
-        <Transition name="page" mode="out-in" :duration="{ enter: 500, leave: 300 }">
+        <Transition name="page" mode="out-in" :duration="{ enter: isLowData ? 250 : 500, leave: isLowData ? 150 : 300 }">
           <component :is="Component" />
         </Transition>
       </RouterView>
@@ -17,6 +18,9 @@
 <script setup lang="ts">
 import AppNavigation from '@/components/layout/AppNavigation.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
+import { useLowDataMode } from '@/composables/useLowDataMode'
+
+const isLowData = useLowDataMode()
 </script>
 
 <style>
